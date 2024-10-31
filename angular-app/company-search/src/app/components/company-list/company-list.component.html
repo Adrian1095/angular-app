@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h2>Search Results</h2>
+      </div>
+    </div>
+
+      <div class="list-group">        
+        @for (company of paginatedCompanies; track company.name;) {
+          <div class="list-item mb-4">                                  
+              <a [routerLink]="['/company', company.company_number]">
+              <h5 class="">{{company.title}}</h5>  
+            </a> 
+                   
+            <p>{{ company.description }}</p>  
+            <p>
+              {{ company.address_snippet || '' }},
+            </p> 
+          </div>
+        }
+        <div class="pagination-controls mt-3">
+          <button class="btn btn-primary" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+          <span class="mx-2">Page {{ currentPage }} of {{ totalPages }}</span>
+          <button class="btn btn-primary" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+        </div>       
+      </div>  
+
+      
+    </div>
